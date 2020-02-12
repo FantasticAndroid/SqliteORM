@@ -18,7 +18,7 @@ import java.util.TimeZone;
 public final class OfferPointsUtils {
 
     private static final String TAG = OfferPointsUtils.class.getSimpleName();
-
+    
     /***
      *
      * @param mainApp
@@ -36,30 +36,11 @@ public final class OfferPointsUtils {
     }
 
     /**
-     * @param mainApp
-     */
-    public static void insertAppVisited(@NonNull MainApp mainApp) {
-        Log.d(TAG, "insertAppVisited()");
-        OfferSqlManager offerSqlManager = OfferSqlManager.getInstance(mainApp);
-
-        offerSqlManager.insertAppVisitedStatus("28-11-2019", new SqlQueryListener<String>() {
-            @Override
-            public void onQuerySuccess(@NonNull String currentDate) {
-                Log.d(TAG, "insertAppVisited(): onQuerySuccess: " + currentDate);
-            }
-
-            @Override
-            public void onQueryFailed(@NonNull String message) {
-                Log.e(TAG, "insertAppVisited(): onQueryFailed: " + message);
-            }
-        });
-    }
-
-    /***
      *
      * @param mainApp
+     * @param sqlQueryListener
      */
-    public static void getAllPoints(@NonNull MainApp mainApp,@NonNull SqlQueryListener<ArrayList<PointSyncTable>> sqlQueryListener) {
+    public static void getAllPoints(@NonNull MainApp mainApp, @NonNull SqlQueryListener<ArrayList<PointSyncTable>> sqlQueryListener) {
         Log.d(TAG, "getAllPointsAndSyncToServer()");
         //MegaOfferSharedPref megaOfferSharedPref = MegaOfferSharedPref.getInstance(mainApp);
         OfferSqlManager offerSqlManager = OfferSqlManager.getInstance(mainApp);

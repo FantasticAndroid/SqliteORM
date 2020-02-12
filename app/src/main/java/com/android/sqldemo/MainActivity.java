@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -15,7 +16,7 @@ import com.android.sqldemo.sqlimpl.tables.PointSyncTable;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends CoreActivity implements View.OnClickListener {
 
     private TextView outputTv;
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void insertOfferPoints() {
         int point = 1;
-        OfferPointsUtils.insertOrUpdatePoints((MainApp) getApplication(),
+        OfferPointsUtils.insertOrUpdatePoints(mainApp,
                 point, new SqlQueryListener<Boolean>() {
                     @Override
                     public void onQuerySuccess(@NonNull Boolean response) {
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void readOfferPoints() {
 
-        OfferPointsUtils.getAllPoints((MainApp) getApplication(),
+        OfferPointsUtils.getAllPoints(mainApp,
                 new SqlQueryListener<ArrayList<PointSyncTable>>() {
                     @Override
                     public void onQuerySuccess(@NonNull ArrayList<PointSyncTable> response) {

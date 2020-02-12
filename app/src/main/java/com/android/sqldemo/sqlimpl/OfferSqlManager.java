@@ -1,5 +1,6 @@
 package com.android.sqldemo.sqlimpl;
 
+import android.os.Handler;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -52,21 +53,21 @@ public class OfferSqlManager {
                                                     int point, @Nullable SqlQueryListener<Boolean> sqlQueryListener) {
         OfferSqlAdapter offerSqlAdapter = mainApp.getMegaOfferAdapter();
         if (offerSqlAdapter != null) {
-            new Thread(new SqlQueryCallback<Boolean>(mainApp, sqlQueryListener) {
+            Handler handler = new Handler(mainApp.getMainLooper());
+            new Thread(new SqlQueryCallback<Boolean>(handler, sqlQueryListener) {
                 @Override
                 public void run() {
                     try {
                         PointSyncTableDao pointSyncTableDao = new PointSyncTableDao();
                         long id = pointSyncTableDao.insertOrUpdatePoint(offerSqlAdapter.getSqliteDatabase(), currentDate, maxPointsCount, point);
-
-                        if (sqlQueryListener != null) {
-                            sqlQueryListener.onQuerySuccess(true);
+                        if (id == -1) {
+                            deliverFailedResult("Insertion/Updation Failed with id -1");
+                        } else {
+                            deliverSuccessResult(true);
                         }
                     } catch (Exception e) {
                         Log.e(TAG, "insertPointInSyncModel() " + e.getMessage());
-                        if (sqlQueryListener != null) {
-                            sqlQueryListener.onQueryFailed(e.getMessage() + "");
-                        }
+                        deliverFailedResult(e.getMessage() + "");
                     }
                 }
             }).start();
@@ -80,8 +81,8 @@ public class OfferSqlManager {
     public synchronized void getPointsFromSyncTable(@NonNull SqlQueryListener<ArrayList<PointSyncTable>> sqlQueryListener) {
         OfferSqlAdapter offerSqlAdapter = mainApp.getMegaOfferAdapter();
         if (offerSqlAdapter != null) {
-
-            new Thread(new SqlQueryCallback<ArrayList<PointSyncTable>>(mainApp, sqlQueryListener) {
+            Handler handler = new Handler(mainApp.getMainLooper());
+            new Thread(new SqlQueryCallback<ArrayList<PointSyncTable>>(handler, sqlQueryListener) {
                 @Override
                 public void run() {
                     try {
@@ -103,29 +104,26 @@ public class OfferSqlManager {
      * @param currentDate
      * @param sqlQueryListener
      */
-    public synchronized void insertAppVisitedStatus(@NonNull String currentDate, @Nullable SqlQueryListener<String> sqlQueryListener) {
+    public synchronized void insertAppVisitedStatus(@NonNull String currentDate,
+                                                    @NonNull SqlQueryListener<Boolean> sqlQueryListener) {
         OfferSqlAdapter offerSqlAdapter = mainApp.getMegaOfferAdapter();
         if (offerSqlAdapter != null) {
-
-            new Thread(new SqlQueryCallback<String>(mainApp, sqlQueryListener) {
+            Handler handler = new Handler(mainApp.getMainLooper());
+            new Thread(new SqlQueryCallback<Boolean>(handler, sqlQueryListener) {
                 @Override
                 public void run() {
                     try {
                         PointSyncTableDao pointSyncTableDao = new PointSyncTableDao();
                         long rowId = pointSyncTableDao.insertAppVisited(offerSqlAdapter.getSqliteDatabase(), currentDate);
 
-                        if (sqlQueryListener != null) {
-                            if (rowId != -1) {
-                                sqlQueryListener.onQuerySuccess(currentDate);
-                            } else {
-                                sqlQueryListener.onQueryFailed(rowId + "");
-                            }
+                        if (rowId == -1) {
+                            deliverFailedResult("Insertion/Updation Failed with id -1");
+                        } else {
+                            deliverSuccessResult(true);
                         }
                     } catch (Exception e) {
                         Log.e(TAG, "insertPointInSyncModel() " + e.getMessage());
-                        if (sqlQueryListener != null) {
-                            sqlQueryListener.onQueryFailed(e.getMessage() + "");
-                        }
+                        deliverFailedResult(e.getMessage() + "");
                     }
                 }
             }).start();
