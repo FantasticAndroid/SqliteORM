@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="mega_offer_db_name">MegaOffer.sqlite</string>
+    <string name="app_name">SqlORM Demo</string>
+    <string name="mega_offer_db_name">Offer.sqlite</string>
+    <string name="btn_insert_points">Insert Points</string>
+    <string name="sqldemo">Sql ORM</string>
+    <string name="btn_get_points">Get Points</string>
+    <string name="label_output">OutPut</string>
     <integer name="mega_offer_db_version">1</integer>
 </resources>

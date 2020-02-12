@@ -1,4 +1,4 @@
-package com.bhaskar.darwin.ui;
+package com.android.sqldb;
 
 public interface GsonProguardMarker {
 }

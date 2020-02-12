@@ -1,7 +1,5 @@
-package com.bhaskar.darwin.ui.sqldb;
+package com.android.sqldb;
 
-
-import com.bhaskar.darwin.ui.GsonProguardMarker;
 
 public interface SqlTypeTable extends GsonProguardMarker {
     String getPrimaryKeyColumn();

@@ -1,4 +1,4 @@
-package com.bhaskar.darwin.ui.sqldb;
+package com.android.sqldb;
 
 import android.content.Context;
 import android.database.SQLException;

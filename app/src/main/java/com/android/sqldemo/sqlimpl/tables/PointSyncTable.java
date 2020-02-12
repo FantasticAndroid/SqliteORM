@@ -1,8 +1,8 @@
-package com.bhaskar.darwin.ui.sqldemo.sqlimpl.tables;
+package com.android.sqldemo.sqlimpl.tables;
 
 import androidx.annotation.NonNull;
 
-import com.bhaskar.darwin.ui.sqldb.SqlTypeTable;
+import com.android.sqldb.SqlTypeTable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

@@ -1,8 +1,8 @@
-package com.bhaskar.darwin.ui.sqldemo;
+package com.android.sqldemo;
 
 import android.app.Application;
 
-import com.bhaskar.darwin.ui.sqldemo.sqlimpl.OfferSqlAdapter;
+import com.android.sqldemo.sqlimpl.OfferSqlAdapter;
 
 public class MainApp extends Application {
     private OfferSqlAdapter offerSqlAdapter;

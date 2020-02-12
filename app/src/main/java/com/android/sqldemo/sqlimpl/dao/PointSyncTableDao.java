@@ -1,14 +1,14 @@
-package com.bhaskar.darwin.ui.sqldemo.sqlimpl.dao;
+package com.android.sqldemo.sqlimpl.dao;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.bhaskar.darwin.ui.sqldb.BaseTableDao;
-import com.bhaskar.darwin.ui.sqldb.SqlTypeTable;
-import com.bhaskar.darwin.ui.sqldb.TableDao;
-import com.bhaskar.darwin.ui.sqldemo.sqlimpl.tables.PointSyncTable;
+import com.android.sqldb.BaseTableDao;
+import com.android.sqldb.SqlTypeTable;
+import com.android.sqldb.TableDao;
+import com.android.sqldemo.sqlimpl.tables.PointSyncTable;
 
 import org.json.JSONException;
 

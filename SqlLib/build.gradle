@@ -1,31 +1,27 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion rootProject.ext.COMPILE_SDK
+
     defaultConfig {
         minSdkVersion rootProject.ext.MIN_SDK
 
         targetSdkVersion rootProject.ext.TARGET_SDK
-        applicationId "com.android.sqldemo"
         versionCode rootProject.ext.VERSION_CODE
         versionName rootProject.ext.VERSION_NAME
+        consumerProguardFiles 'consumer-rules.pro'
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation project(':SqlLib')
+    implementation 'androidx.annotation:annotation:1.1.0'
 }

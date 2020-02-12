@@ -1,4 +1,4 @@
-package com.bhaskar.darwin.ui.sqldb;
+package com.android.sqldb;
 
 public interface TableInterface {
 

@@ -1,12 +1,12 @@
-package com.bhaskar.darwin.ui.sqldemo.sqlimpl;
+package com.android.sqldemo.sqlimpl;
 
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.bhaskar.darwin.ui.sqldb.SQLHelper;
-import com.bhaskar.darwin.ui.sqldemo.sqlimpl.dao.PointSyncTableDao;
+import com.android.sqldb.SQLHelper;
+import com.android.sqldemo.sqlimpl.dao.PointSyncTableDao;
 
 /**
  * OfferSqlAdapter is a child of SQLHelper having all responsibilities of
