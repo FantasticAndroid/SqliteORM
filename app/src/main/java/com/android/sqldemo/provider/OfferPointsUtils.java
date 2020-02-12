@@ -18,7 +18,7 @@ import java.util.TimeZone;
 public final class OfferPointsUtils {
 
     private static final String TAG = OfferPointsUtils.class.getSimpleName();
-    
+
     /***
      *
      * @param mainApp

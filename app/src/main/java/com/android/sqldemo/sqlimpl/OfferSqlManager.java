@@ -53,8 +53,7 @@ public class OfferSqlManager {
                                                     int point, @Nullable SqlQueryListener<Boolean> sqlQueryListener) {
         OfferSqlAdapter offerSqlAdapter = mainApp.getMegaOfferAdapter();
         if (offerSqlAdapter != null) {
-            Handler handler = new Handler(mainApp.getMainLooper());
-            new Thread(new SqlQueryCallback<Boolean>(handler, sqlQueryListener) {
+            new Thread(new SqlQueryCallback<Boolean>(mainApp, sqlQueryListener) {
                 @Override
                 public void run() {
                     try {
@@ -81,8 +80,7 @@ public class OfferSqlManager {
     public synchronized void getPointsFromSyncTable(@NonNull SqlQueryListener<ArrayList<PointSyncTable>> sqlQueryListener) {
         OfferSqlAdapter offerSqlAdapter = mainApp.getMegaOfferAdapter();
         if (offerSqlAdapter != null) {
-            Handler handler = new Handler(mainApp.getMainLooper());
-            new Thread(new SqlQueryCallback<ArrayList<PointSyncTable>>(handler, sqlQueryListener) {
+            new Thread(new SqlQueryCallback<ArrayList<PointSyncTable>>(mainApp, sqlQueryListener) {
                 @Override
                 public void run() {
                     try {
@@ -108,8 +106,7 @@ public class OfferSqlManager {
                                                     @NonNull SqlQueryListener<Boolean> sqlQueryListener) {
         OfferSqlAdapter offerSqlAdapter = mainApp.getMegaOfferAdapter();
         if (offerSqlAdapter != null) {
-            Handler handler = new Handler(mainApp.getMainLooper());
-            new Thread(new SqlQueryCallback<Boolean>(handler, sqlQueryListener) {
+            new Thread(new SqlQueryCallback<Boolean>(mainApp, sqlQueryListener) {
                 @Override
                 public void run() {
                     try {

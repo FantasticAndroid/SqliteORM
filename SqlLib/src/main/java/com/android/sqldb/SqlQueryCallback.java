@@ -1,5 +1,6 @@
 package com.android.sqldb;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 
@@ -11,11 +12,11 @@ public abstract class SqlQueryCallback<T> implements Runnable {
     private final Handler handler;
 
     /**
-     * @param context
+     * @param application
      * @param sqlQueryListener
      */
-    public SqlQueryCallback(@NonNull Handler handler, SqlQueryListener<T> sqlQueryListener) {
-        this.handler = handler;
+    public SqlQueryCallback(@NonNull Application application, SqlQueryListener<T> sqlQueryListener) {
+        handler = new Handler(application.getMainLooper());
         this.sqlQueryListener = sqlQueryListener;
     }
 
